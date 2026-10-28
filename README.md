@@ -36,11 +36,10 @@ Tài liệu mô tả thiết kế thuật toán điều khiển động cơ đ�
 
 - Hệ ba pha cân bằng, thứ tự pha `a-b-c`; trục d đặt theo từ thông rotor.
 - Clarke bảo toàn biên độ. Dòng `id`, `iq` dùng quy ước tương ứng với biên độ đỉnh dòng pha trong chế độ hình sin cân bằng.
-- Dùng `Rs` như điện trở mỗi pha và `psi_f` như từ thông liên kết pha trong mô hình dq. Cần giữ cùng quy ước khi nhập mô hình động cơ.
-- Ảnh chưa xác định 36 V là điện áp DC bus hay điện áp pha/dây. Các tính toán giới hạn điện áp ở đây **tạm giả định `Vdc = 36 V`**.
-- Ảnh chưa xác định 9.5 A là RMS hay đỉnh. Để xây dựng ví dụ nhất quán với công thức mô men bên dưới, **tạm đặt giới hạn dòng dq `Imax = 9.5 A`**. Đây là giả định thiết kế, không phải xác nhận dòng đỉnh của phần cứng.
-- Hệ số ma sát nhớt `B` chưa được cung cấp. Ví dụ tính gain tốc độ dùng `B = 0`; khi biết giá trị thực phải cập nhật.
-- Phương án cơ sở đặt `id_ref = 0`, chưa triển khai suy yếu từ thông. Góc rotor được lấy từ mô hình khi mô phỏng và từ cảm biến vị trí khi triển khai thực tế.
+- Dùng `Rs` như điện trở mỗi pha và `psi_f` như từ thông liên kết pha trong mô hình dq. 
+- Điện áp định mức `Vdc = 36 V`**.
+- Dòng điện định mức `I = 9.5 A`**.
+- Phương án cơ sở đặt `id_ref = 0`. Góc rotor được lấy từ mô hình khi mô phỏng và từ cảm biến vị trí khi triển khai thực tế.
 
 Các giả định về điện áp, dòng, điện trở và từ thông cần được đối chiếu với quy ước của động cơ trước khi chốt mô hình.
 
@@ -67,3 +66,9 @@ flowchart LR
 ```
 
 Vòng tốc độ sinh dòng tạo mô men `iq_ref`. Hai vòng dòng điều chỉnh `id` và `iq`, rồi tạo điện áp tham chiếu. SVM chuyển điện áp tham chiếu thành duty cycle cho nghịch lưu.
+
+## 4. Kịch bản mô phỏng
+
+- Kịch bản 1: Tốc độ tăng dần từ 0-1500-2000-3000 Rpm và moment tải tăng dần từ 0-0.5 Nm 
+- Kịch bản 2: Tốc độ giữ ổn định ở 3000 Rpm và moment tải tăng dần từ 0-0.5Nm
+- Kịch bản 3:  Tốc độ giữ ổn định ở 3000 Rpm và moment tải tăng đột ngột từ 0.5 Nm ở giây thứ 5 
