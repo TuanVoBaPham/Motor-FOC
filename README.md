@@ -1,4 +1,3 @@
-# Motor-FOC
 # Thuật toán FOC điều khiển dòng điện và tốc độ động cơ PMSM
 
 Tài liệu mô tả thiết kế thuật toán điều khiển động cơ đồng bộ nam châm vĩnh cửu (PMSM) theo yêu cầu trong ảnh: vòng tốc độ bên ngoài, hai vòng dòng điện bên trong và điều chế SVM-PWM ở 16 kHz. Nội dung gồm mô hình toán, cách chọn tham số PI, trình tự tính toán, kịch bản đánh giá và kiến trúc phần cứng.
